@@ -11,6 +11,9 @@ $ npm install -g create-react-app
 ```
 $ create-react-app your-app # 注意命名方式
 ```
+```js
+npx create-react-app my-app # 把安装和初始化目录的命令放在一起
+```
 默认用yarn安装，相当于npm，cnpm
 
 启动项目
