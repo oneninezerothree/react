@@ -1,13 +1,11 @@
 {
-  "name": "my-react-app",
+  "name": "my-react-project",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "antd-mobile": "^2.2.14",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1",
-    "weui": "^2.0.0"
+    "react-scripts": "3.0.1"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -2,7 +2,15 @@
 import React from 'react';
 // 真实DOM
 import ReactDOM from 'react-dom';
-// import './index.css';
+import 'antd-mobile/dist/antd-mobile.css';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+import Menu from './components/Menu/Menu';
+import SearchBar from './components/SearchBar/SearchBar';
+import Search from './components/Search/Search';
+import 'weui';
+import './index.css';
+
 // import App from './App';
 // import * as serviceWorker from './serviceWorker';
 
@@ -47,9 +55,10 @@ const template4 = <div>
     <input />
     {0?template:template2}
 </div>
-console.log(template,template2,template3,template4)
+
 // ReactDOM把虚拟DOM转为真实DOM，挂载到root的这个节点上
-ReactDOM.render(<div>
+
+const template5 = <div>
     {state.title}
     <p id={state.title}>没有指令</p>
     <p>{state.obj.name}</p>
@@ -65,6 +74,17 @@ ReactDOM.render(<div>
         <p>真的</p>,
         <p>假的</p>
     )}
+</div>
+console.log(template,template2,template3,template4,template5)
+
+
+
+ReactDOM.render(<div>
+    <Menu/>
+    <SearchBar/>
+    <Header name="微信"/>
+    <Footer/>
+    <Search/>
 </div>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
