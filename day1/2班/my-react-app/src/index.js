@@ -1,18 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import './index.css';
+import './index.css';
+import 'weui'
 // import App from './App';
 // import * as serviceWorker from './serviceWorker';
-
+import Header from './components/Header/Header';
+import Search from './components/Search/Search';
+import Panel from './components/Panel/Panel';
 // ReactDOM.render(<App />, document.getElementById('root'));
 const data = {
     title: 'Hello World123132',
     bool: !0,
-    obj:{
-        name:'yao',
-        arr:['ps','js'],//v-for
-        arr3:['1','2'],//v-for
-        arr2:[
+    obj: {
+        name: 'yao',
+        arr: ['ps', 'js'],//v-for
+        arr3: ['1', '2'],//v-for
+        arr2: [
             <li key='0'>ps</li>,
             <li key='1'>js</li>
         ] //v-for
@@ -20,10 +23,10 @@ const data = {
     // v-if
 }
 const methods = {
-    vFor(arr){
+    vFor(arr) {
         return <ul>
             {
-                arr.map((item,index)=>{
+                arr.map((item, index) => {
                     return <li key={index}>{item}</li>
                 })
             }
@@ -34,9 +37,8 @@ const methods = {
 const template = <div>{data.title}</div>
 
 const template2 = <div>12638216381732</div>
-console.log(template,template2)
-ReactDOM.render(<div>
-    {data.bool?template:template2}
+const template3 = <div>
+    {data.bool ? template : template2}
     {data.obj.name}
     <ul>
         {data.obj.arr2}
@@ -45,13 +47,19 @@ ReactDOM.render(<div>
     {/* v-for */}
     {methods.vFor(data.obj.arr)}
     {methods.vFor(data.obj.arr3)}
-    
+
     {/* v-if */}
     <div>
         {
-            1?<p>真的</p>:<p>假的</p>
+            1 ? <p>真的</p> : <p>假的</p>
         }
     </div>
+</div>
+console.log(template, template2, template3)
+ReactDOM.render(<div>
+    <Header title="支付宝" />
+    <Search/>
+    <Panel/>
 </div>, document.getElementById('root'));
 
 // ReactDOM.render(
