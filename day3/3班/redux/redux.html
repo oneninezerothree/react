@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="redux.js"></script>
+    <script>
+        // console.log(window);
+        // reducer 漏斗
+        const reducer = (state = {
+            // state
+            water: 'sweet',
+            author: 'yao'
+            // action 动作
+        }, action) => {
+            // console.log(action)
+            switch (action.type) {
+                case 'SETWATER':
+                    return {
+                        ...state,
+                        water: action.status
+                    }
+                default:
+                    return state
+            }
+        }
+        // store 创建仓库 水杯容器
+        const store = window.Redux.createStore(reducer)
+        store.subscribe(() => console.log(store.getState()))
+
+        // console.log(store)
+        // console.log(store.getState())
+        // store.dispatch(action)
+        // 重新配置好整个新仓库了
+        store.dispatch({
+            type: 'SETWATER',
+            status: 'sault'
+        })
+        // console.log(store.getState())
+    </script>
+</body>
+
+</html>

@@ -2,13 +2,23 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import 'weui'
+
+
+
 // import App from './App';
 // import * as serviceWorker from './serviceWorker';
-// import Header from './components/Header/Header';
-// import Search from './components/Search/Search';
-// import Panel from './components/Panel/Panel';
+import Header from './components/Header/Header';
+import Search from './components/Search/Search';
+import Panel from './components/Panel/Panel';
+import Pure from './components/Pure/Pure';
+import Fn from './components/Fn/Fn';
+import Hoc from './components/Hoc/Hoc';
 
-import LifeCycle from './components/LifeCycle/LifeCycle';
+// 从react-redux导出一个Provider组件，这个组件是用来在react激活redux使用的
+import { Provider } from 'react-redux'
+import store from './stores/store'
+console.log(store)
+// import LifeCycle from './components/LifeCycle/LifeCycle';
 // ReactDOM.render(<App />, document.getElementById('root'));
 const data = {
     title: 'Hello World123132',
@@ -58,12 +68,16 @@ const template3 = <div>
     </div>
 </div>
 console.log(template, template2, template3)
-ReactDOM.render(<div>
+// 整个react的所有组件都有机会去顶级组件Provider里面使用仓库的值
+ReactDOM.render(<Provider store={store}>
     {/* <Header title="支付宝" />
     <Search/>
     <Panel/> */}
-    <LifeCycle />
-</div>, document.getElementById('root'));
+    {/* <LifeCycle /> */}
+    {/* <Pure/> */}
+    {/* <Fn/> */}
+    <Hoc/>
+</Provider>, document.getElementById('root'));
 
 // ReactDOM.render(
 //     React.createElement('div',null,'hello world'), 

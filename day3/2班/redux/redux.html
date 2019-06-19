@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input />
+    <button></button>
+    <script src="redux.js"></script>
+    <script>
+        // console.log(window)
+        // 2.reducer
+        const reducer = (state = {
+            // 3. state
+            author: 'Yao'
+        },
+            // 4.action
+            action) => {
+            // 处理仓库的行为和动作
+            switch (action.type) {
+                // 获取state里面的author值
+                case 'GETAUTHOR':
+                    return state;
+                    break;
+                // 设置state里面的author值
+                case 'SETAUTHOR':
+                    return {
+                        ...state,
+                        age: 18,
+                        skill: action.skill
+                    };
+                    break;
+                default:
+                    return state
+            }
+        }
+        // 1.创建一个公共仓库 store
+        const store = window.Redux.createStore(reducer);
+        // 监听仓库的数据改变，如果改变了，那就触发
+        store.subscribe(() => console.log(store.getState()))
+        // console.log(store);
+        // 相当于getters
+        // console.log(store.getState())
+        // 触发action
+        store.dispatch({
+            type: 'SETAUTHOR',
+            skill: ['ps','js','css']
+        })
+        // console.log(store.getState())
+
+
+
+
+
+
+        // vuex用
+        // mumtation
+        // getters
+    </script>
+</body>
+
+</html>

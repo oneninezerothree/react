@@ -12,6 +12,7 @@ class LifeCycle extends React.Component {
             bool: true
         }
     }
+
     // 挂载前 同步修改值的地方
     componentWillMount() {
         console.log('-----------componentWillMount-------------')
@@ -27,6 +28,7 @@ class LifeCycle extends React.Component {
 
 
     }
+    // JSX快照
     render() {
         console.log('-----------render-------------')
         console.log(this)
@@ -76,6 +78,7 @@ class LifeCycle extends React.Component {
     // getSnapshotBeforeUpdate(){
     //     console.log('-----------getSnapshotBeforeUpdate-------------')
     // }
+    // render
     componentDidUpdate(){
         console.log('-----------componentDidUpdate-------------')
     }
