@@ -13,6 +13,7 @@ import Panel from './components/Panel/Panel';
 import Pure from './components/Pure/Pure';
 import Fn from './components/Fn/Fn';
 import Hoc from './components/Hoc/Hoc';
+import Gallery from './components/Gallery/Gallery';
 
 // 从react-redux导出一个Provider组件，这个组件是用来在react激活redux使用的
 import { Provider } from 'react-redux'
@@ -69,14 +70,15 @@ const template3 = <div>
 </div>
 console.log(template, template2, template3)
 // 整个react的所有组件都有机会去顶级组件Provider里面使用仓库的值
-ReactDOM.render(<Provider store={store}>
-    {/* <Header title="支付宝" />
+ReactDOM.render( >
+    <Header title="支付宝" />
     <Search/>
-    <Panel/> */}
+    <Panel/>
+    <Gallery/>
     {/* <LifeCycle /> */}
     {/* <Pure/> */}
     {/* <Fn/> */}
-    <Hoc/>
+    {/* <Hoc/> */}
 </Provider>, document.getElementById('root'));
 
 // ReactDOM.render(

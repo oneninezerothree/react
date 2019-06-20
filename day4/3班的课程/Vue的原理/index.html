@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="demo"></div>
+    <script>
+        // M
+        let data = {
+            name: 'Yao',
+            arr: [['a','b','c'], 'b', 'c'] //无法劫持数组
+        }
+        // ES5新增的方法
+        // 监听data对象的name属性值
+        // 数据劫持
+        Object.defineProperty(data, "arr", {
+            set: function (newValue) {
+                document.querySelector("#demo").innerHTML = newValue
+                // 更新数据，并且更新视图
+                console.log('newValue:' + newValue)
+            },
+            // 把M取出来拼接模板生成DOM
+            get: function () {
+                console.log("getValue:")
+                return {
+                    name: 'Yao',
+                    arr: ['a', 'b', 'c']
+                }
+            }
+        })
+
+        // 先触发被劫持对象的所对的数据的get回调，在拼接虚拟DOM，动真实DOM
+        document.querySelector("#demo").innerHTML = data.name
+        console.log(data)
+        // 获取值
+        // data.name = 'Jing'
+    </script>
+</body>
+
+</html>

@@ -1,4 +1,5 @@
 import React from 'react';
+import {connect} from 'react-redux'
 const data = {
     span: '搜索',
 
@@ -18,6 +19,10 @@ class Search extends React.Component {
     getInputValue(e) {
         console.log(e.target.value)
         let searchInputText = e.target.value
+        this.props.dispatch({
+            type:"GETINPUTVALUE",
+            searchInputText
+        })
         this.setState({
             searchInputText
         })
@@ -61,4 +66,8 @@ class Search extends React.Component {
         )
     }
 }
-export default Search
+export default connect((state)=>{
+    // 1.subscribe
+    // 2.getState
+    return state
+})(Search)

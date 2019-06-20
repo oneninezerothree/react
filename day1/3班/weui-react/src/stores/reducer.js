@@ -1,32 +1,23 @@
 export default (state = {
-    water: 'sweet',
-    skill: ['ps', 'js', 'css'],
-    searchInputText: '',
-    isShowGallery: false,
-    imgUrl: ''
+    name: 'Yao',
+    getSearchValue: '',
+    // 处理预览图
+    imgUrl: '',
+    isShowGallery: false
 }, action) => {
     switch (action.type) {
-        case 'HANDLEWATER':
-            return {
-                water: 'sault'
-            }
         case 'TOGGLEGALLERY':
             return {
                 ...state,
                 imgUrl: action.imgUrl,
                 isShowGallery: action.isShowGallery
             }
-        case 'GETINPUTVALUE':
+        case 'GETSEARCHVALUE':
             return {
                 ...state,
-                searchInputText: action.searchInputText
+                getSearchValue: action.getSearchValue
             }
         default:
             return state
     }
 }
-
-// state
-// getters
-// mumtation
-// action
