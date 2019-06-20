@@ -2,9 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import 'weui'
+// BrowserRouter简写为Router
+// HashRouter 哈希路由 有#号
+// BrowserRouter 浏览器路由 去#号
+import { HashRouter as Router, Route, Link, Redirect, Switch } from "react-router-dom";
 
-
-
+// 公共组件
 // import App from './App';
 // import * as serviceWorker from './serviceWorker';
 import Header from './components/Header/Header';
@@ -14,6 +17,11 @@ import Pure from './components/Pure/Pure';
 import Fn from './components/Fn/Fn';
 import Hoc from './components/Hoc/Hoc';
 import Gallery from './components/Gallery/Gallery';
+
+// 路由组件
+
+import Home from './pages/Home/Home'
+import Detail from './pages/Detail/Detail'
 
 // 从react-redux导出一个Provider组件，这个组件是用来在react激活redux使用的
 import { Provider } from 'react-redux'
@@ -70,15 +78,38 @@ const template3 = <div>
 </div>
 console.log(template, template2, template3)
 // 整个react的所有组件都有机会去顶级组件Provider里面使用仓库的值
-ReactDOM.render( >
-    <Header title="支付宝" />
-    <Search/>
-    <Panel/>
-    <Gallery/>
-    {/* <LifeCycle /> */}
-    {/* <Pure/> */}
-    {/* <Fn/> */}
-    {/* <Hoc/> */}
+
+
+
+ReactDOM.render(<Provider store={store}>
+    <Router>
+        {/* <Header title="支付宝" />
+        <Search />
+        <Panel />
+        <Gallery /> */}
+        {/* <LifeCycle /> */}
+        {/* <Pure/> */}
+        {/* <Fn/> */}
+        {/* <Hoc/> */}
+        {/* exact排除 /路由 */}
+        {/* <Link to={{
+            pathname: "/home",
+            search: "?sort=name",
+            hash: "#the-hash",
+            state: { fromDashboard: true }
+        }}>Home</Link>
+        <Link to={{
+            pathname: "/detail",
+            search: "?sort=name",
+            hash: "#the-hash",
+            state: { fromDashboard: true }
+        }}>detail</Link> */}
+        <Switch>
+            <Route exact path="/home" component={Home} />
+            <Route path="/detail" component={Detail} />
+        </Switch>
+        <Redirect to="/home" />
+    </Router>
 </Provider>, document.getElementById('root'));
 
 // ReactDOM.render(

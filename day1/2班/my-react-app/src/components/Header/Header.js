@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from "react-router-dom";
 // 无状态
 const style = {
     height: '50px',
@@ -24,8 +25,13 @@ class Header extends React.Component {
     render() {
         console.log(this)
         return (
-            <header style={style}>{this.props?this.props.title:this.title2()}</header>
+            <header onClick={
+                ()=>{
+                    this.props.history.push('/detail?name=yao')
+                }
+            } style={style}>{this.props?this.props.title:this.title2()}</header>
         )
     }
 }
-export default Header
+// 编程式导航
+export default withRouter(Header)

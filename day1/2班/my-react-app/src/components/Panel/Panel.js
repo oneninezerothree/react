@@ -3,6 +3,7 @@ import axios from 'axios';
 import Loading from '../Loading/Loading'
 import LoadMore from '../LoadMore/LoadMore'
 import { connect } from 'react-redux'
+import { Link } from "react-router-dom";
 class Header extends React.Component {
     state = {
         news: [],
@@ -17,7 +18,10 @@ class Header extends React.Component {
             }
         }).map((item, index) => {
             return (
-                <a key={index} href="javascript:void(0);" className="weui-media-box weui-media-box_appmsg">
+                <Link key={index} to={{
+                    pathname: "/detail",
+                    search: `?id=${index}`,
+                }} className="weui-media-box weui-media-box_appmsg">
                     <div onClick={
                         this.showGallery.bind(this, item.author ? item.author.avatar_url : '')
                     } className="weui-media-box__hd">
@@ -27,16 +31,16 @@ class Header extends React.Component {
                         <h4 className="weui-media-box__title">{item.title}</h4>
                         <p className="weui-media-box__desc">{item.author ? item.author.loginname : '无名'}</p>
                     </div>
-                </a>
+                </Link>
             )
         })
     }
     // 图片加载完
     loadImgSuccess(e){
-        console.log(e)
+        // console.log(e)
     }
     loadImgFail(e){
-        console.log(e)
+        // console.log(e)
     }
     // 显示预览图片
     showGallery(imgUrl) {

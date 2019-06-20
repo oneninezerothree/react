@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux'
+import { withRouter } from "react-router-dom";
 class Gallery extends React.Component {
     render() {
+        console.log(this)
         return (
             <div className="weui-gallery" style={{
                 display: this.props.isShowGallery ? 'block' : 'none'
@@ -25,6 +27,6 @@ class Gallery extends React.Component {
         })
     }
 }
-export default connect((state) => {
+export default withRouter(connect((state) => {
     return state
-})(Gallery)
+})(Gallery))
