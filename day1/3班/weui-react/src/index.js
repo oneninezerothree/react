@@ -22,7 +22,8 @@ import * as serviceWorker from './serviceWorker';
 ReactDOM.render(<Provider store={store}>
     <Router>
         <Switch>
-            <Route exact path="/detail" component={Detail} />)}
+            {/* 动态路由 */}
+            <Route exact path="/detail/:id" component={Detail} />)}
         </Switch>
         {/* 栏目的路由 */}
         <Switch>

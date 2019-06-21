@@ -8,7 +8,10 @@ export default class Home extends Component {
     render() {
         return (
             <div>
-                <Header name="分享" />
+                <Header status={{
+                    name: "分享",
+                    template: null
+                }}  />
                 <SearchBar/>
                 <Panel tab="share" />
                 <Gallery/>

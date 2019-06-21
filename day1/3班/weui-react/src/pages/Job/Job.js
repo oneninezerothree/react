@@ -8,7 +8,10 @@ export default class Job extends Component {
     render() {
         return (
             <div>
-                <Header name="求职" />
+                <Header status={{
+                    name: "求职",
+                    template: null
+                }} />
                 <SearchBar/>
                 <Panel tab="job" />
                 <Gallery/>

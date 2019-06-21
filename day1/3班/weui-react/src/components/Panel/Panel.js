@@ -3,7 +3,7 @@ import axios from 'axios'
 import Loading from '../Loading/Loading'
 import LoadMore from '../LoadMore/LoadMore'
 import { connect } from 'react-redux'
-import { Link,withRouter  } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import HOC from '../HOC/HOC'
 class Panel extends React.Component {
     state = {
@@ -30,10 +30,8 @@ class Panel extends React.Component {
             // Link 声明式导航
             return (
                 <Link key={index} to={{
-                    pathname: "/detail",
-                    search: `?id=${index}`,
-                    hash: "#the-hash",
-                    state: { fromDashboard: true }
+                    pathname: `/detail/${item.id}`,
+                    // search: `?id=${item.id}`,
                 }} className="weui-media-box weui-media-box_appmsg">
                     <div onClick={
                         this.showGallery.bind(this, item.author.avatar_url)
@@ -85,6 +83,7 @@ class Panel extends React.Component {
                 tab: this.props.tab
             }
         })).data.data
+        sessionStorage.setItem(this.props.tab, JSON.stringify([...this.state.news, ...news]))
         // 拿完数据等待一秒更新状态
         await new Promise((resovle) => {
             let time = 1;
@@ -114,7 +113,18 @@ class Panel extends React.Component {
     componentDidMount() {
         console.log(this)
         // 首次加载
-        this.loadMore();
+        // 判断缓存是否有数据 有缓存就从缓存读数据
+        if (sessionStorage.getItem(this.props.tab)) {
+            this.setState({
+                // page: ++this.state.page,
+                news: JSON.parse(sessionStorage.getItem(this.props.tab)),
+                isShowLoading: false
+            })
+        } else {
+            // 如果没有缓存发请求
+            this.loadMore();
+        }
+
     }
 }
 // connect负责连接redux
