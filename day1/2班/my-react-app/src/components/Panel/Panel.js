@@ -8,7 +8,8 @@ class Header extends React.Component {
     state = {
         news: [],
         page: 1,
-        loadingStatus: 'show'
+        loadingStatus: 'show',
+        tab: this.props.tabbars[this.props.tab].url.slice(1) === 'home' ? 'share' : this.props.tabbars[this.props.tab].url.slice(1)
     }
     // :style
     filterNews(arr, searchInputText) {
@@ -36,10 +37,10 @@ class Header extends React.Component {
         })
     }
     // 图片加载完
-    loadImgSuccess(e){
+    loadImgSuccess(e) {
         // console.log(e)
     }
-    loadImgFail(e){
+    loadImgFail(e) {
         // console.log(e)
     }
     // 显示预览图片
@@ -64,7 +65,7 @@ class Header extends React.Component {
                 <div style={{
                     display: this.state.loadingStatus === 'show' || this.state.news.length >= 30 ? 'none' : 'block'
                 }} onClick={
-                    this.loadMore.bind(this)
+                    this.loadMore.bind(this, this.state.tab)
                 } className="weui-panel__ft">
                     <a href="javascript:void(0);" className="weui-cell weui-cell_access weui-cell_link">
                         <div className="weui-cell__bd">查看更多</div>
@@ -79,15 +80,25 @@ class Header extends React.Component {
 
     componentDidMount() {
         // 页面第一次加载触发的
-        this.loadMore();
+        const tab = this.state.tab
+            console.log(tab)
+        // 如果缓存有的话，读缓存
+        if (sessionStorage.getItem(tab)) {
+            const news = JSON.parse(sessionStorage.getItem(tab))
+            this.setState({
+                news,
+                loadingStatus: 'hide'
+            })
+        } else {
+            // 否则发请求，并把数据加进缓存里面
+            this.loadMore(tab);
+        }
     }
 
-    async loadMore() {
+    async loadMore(tab) {
         this.setState({
             loadingStatus: 'show'
         })
-        const tab = this.props.tabbars[this.props.tab].url.slice(1)==='home'?'share':this.props.tabbars[this.props.tab].url.slice(1)
-        console.log(tab)
         const news = (await axios.get('https://cnodejs.org/api/v1/topics', {
             params: {
                 page: this.state.page,
@@ -95,8 +106,8 @@ class Header extends React.Component {
                 tab
             }
         })).data.data
-        await new Promise((resolve) => { setTimeout(() => { resolve() }, 1000) })
-        console.log(news);
+        sessionStorage.setItem(tab, JSON.stringify([...this.state.news, ...news]))
+        // await new Promise((resolve) => { setTimeout(() => { resolve() }, 1000) })
         this.setState({
             page: ++this.state.page,
             news: [...this.state.news, ...news],

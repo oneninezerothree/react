@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 // Route 嵌套在Router
 // Link router-link
 // Router router-view
-import { HashRouter as Router, Route, Redirect, Switch } from "react-router-dom";
+import { HashRouter as Router, Route, Redirect, Switch, withRouter } from "react-router-dom";
 
 import 'weui';
 import './index.css';
@@ -22,7 +22,7 @@ import * as serviceWorker from './serviceWorker';
 ReactDOM.render(<Provider store={store}>
     <Router>
         <Switch>
-            <Route exact path="/detail" component={Detail} />
+            <Route exact path="/detail" component={Detail} />)}
         </Switch>
         {/* 栏目的路由 */}
         <Switch>
@@ -33,6 +33,7 @@ ReactDOM.render(<Provider store={store}>
         {/* <Route path="/detail/abc" component={Child} /> */}
         {/* <Redirect to="/" /> */}
     </Router>
+
 </Provider>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

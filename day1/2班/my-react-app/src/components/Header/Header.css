@@ -1,0 +1,24 @@
+.header {
+  display: flex;
+  text-align: center;
+  line-height: 50px;
+  height: 50px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 3;
+  background-color: #58bc58;
+  color: white;
+}
+.header .leftIcon {
+  flex: 1;
+}
+.header .leftIcon img {
+  height: 70%;
+}
+.header .title {
+  flex: 1;
+}
+.header .rightIcon {
+  flex: 1;
+}

@@ -13,6 +13,7 @@ export default connect((state) => {
         })
     }
     render() {
+        console.log(this)
         return (
             <div className="weui-gallery" style={{
                 display: this.props.isShowGallery?'block':'none'
