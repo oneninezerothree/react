@@ -50,7 +50,9 @@ class Panel extends React.Component {
     }
     render() {
         return (
-            <div className="weui-panel weui-panel_access">
+            <div style={{
+                paddingBottom: '60px'
+            }} className="weui-panel weui-panel_access">
                 <p>{this.props.getSearchValue}</p>
                 <div className="weui-panel__bd">
                     {this.filterNews(this.state.news, this.props.getSearchValue)}
@@ -74,11 +76,13 @@ class Panel extends React.Component {
         this.setState({
             isShowLoading: true
         })
-
+        console.log(this.props.tab)
         const news = (await axios.get('https://cnodejs.org/api/v1/topics', {
             params: {
                 limit: 10,
-                page: this.state.page
+                page: this.state.page,
+                // 频道
+                tab: this.props.tab
             }
         })).data.data
         // 拿完数据等待一秒更新状态

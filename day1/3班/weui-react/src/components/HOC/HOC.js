@@ -12,7 +12,7 @@ export default (HocComponent)=>{
             return (
                 <HocComponent hoc={{
                     ...this.state.skill,
-                }} axios={this.axios} />
+                }} axios={this.axios} tab={this.props.tab} />
             )
         }
     }

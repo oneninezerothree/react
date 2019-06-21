@@ -40,7 +40,9 @@ class SearchBar extends React.Component {
     }
     render() {
         return (
-            <div className={
+            <div style={{
+                paddingTop: '58px'
+            }} className={
                 this.state.bool ? 'weui-search-bar weui-search-bar_focusing' : 'weui-search-bar'
             } id="searchBar">
                 <form className="weui-search-bar__form">
@@ -76,7 +78,7 @@ class SearchBar extends React.Component {
                 </form>
                 <a onClick={
                     this.toggle.bind(this)
-                } href="#top" className="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
+                } className="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
             </div>
         )
     }

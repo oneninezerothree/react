@@ -3,7 +3,12 @@ import './Header.css'
 class Header extends React.Component {
     render(){
         return (
-            <header>{this.props.name}</header>
+            <header style={{
+                position: 'fixed',
+                top: 0,
+                zIndex: 3,
+                width: '100%'
+            }}>{this.props.name}</header>
         )
     }
 }

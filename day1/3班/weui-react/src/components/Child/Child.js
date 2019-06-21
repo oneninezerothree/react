@@ -2,7 +2,7 @@ import React from 'react'
 class Child extends React.Component {
     render(){
         return (
-            <header>子组件{this.props.name}</header>
+            <header>子组件</header>
         )
     }
     // 旧版本
@@ -11,8 +11,8 @@ class Child extends React.Component {
         console.log(props)
     }
     componentWillUnmount(){
-        console.log(this.refs.abc.abc)
-        console.log('componentWillUnmountcomponentWillUnmountcomponentWillUnmountcomponentWillUnmountcomponentWillUnmount')
+        // console.log(this.refs.abc.abc)
+        // console.log('componentWillUnmountcomponentWillUnmountcomponentWillUnmountcomponentWillUnmountcomponentWillUnmount')
     }
     
 }

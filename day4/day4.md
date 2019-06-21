@@ -29,7 +29,7 @@ ReactDOM.render(
 |-|-|
 |BrowserRouter|浏览器路由 url上去#/|
 |HashRouter|哈希路由 url上留#|
-|Route|Router子项，定义路由跳转的规则，一般是放在Router里面，也可以放在Switch里面|
+|Route|Router子项，定义路由跳转的规则，一般是放在Router里面，也可以放在Switch里面,如果是/的话，建议加上exact|
 |Switch|统筹Route组件|
 |Redirect|默认路由重定向|
 |Link|声明式导航，也相当于`<a>`标签|

@@ -4,15 +4,19 @@ import SearchBar from '../../components/SearchBar/SearchBar';
 import Panel from '../../components/Panel/Panel';
 import Gallery from '../../components/Gallery/Gallery';
 import Tabbar from '../../components/Tabbar/Tabbar';
-export default class Home extends Component {
+export default class Job extends Component {
     render() {
         return (
             <div>
-                <Header name="分享" />
+                <Header name="求职" />
                 <SearchBar/>
-                <Panel tab="share" />
+                <Panel tab="job" />
                 <Gallery/>
-                <Tabbar tab={0} />
+                <Tabbar tab={2} html={
+                    <div>123</div>
+                } fn={()=>{
+                    
+                }}/>
             </div>
         )
     }
