@@ -54,7 +54,9 @@ class Header extends React.Component {
     render() {
         console.log(this)
         return (
-            <div className="weui-panel weui-panel_access">
+            <div style={{
+                paddingBottom: '50px'
+            }} className="weui-panel weui-panel_access">
                 <div className="weui-panel__bd">
                     {this.filterNews(this.state.news, this.props.searchInputText)}
 
@@ -84,11 +86,13 @@ class Header extends React.Component {
         this.setState({
             loadingStatus: 'show'
         })
-
+        const tab = this.props.tabbars[this.props.tab].url.slice(1)==='home'?'share':this.props.tabbars[this.props.tab].url.slice(1)
+        console.log(tab)
         const news = (await axios.get('https://cnodejs.org/api/v1/topics', {
             params: {
                 page: this.state.page,
-                limit: 10
+                limit: 10,
+                tab
             }
         })).data.data
         await new Promise((resolve) => { setTimeout(() => { resolve() }, 1000) })

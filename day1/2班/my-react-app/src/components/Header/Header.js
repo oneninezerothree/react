@@ -7,7 +7,10 @@ const style = {
     textAlign: 'center',
     lineHeight: '50px',
     color: 'white',
-    backgroundColor: 'red'
+    backgroundColor: '#58bc58',
+    position: 'fixed',
+    top: 0,
+    zIndex: 3
 }
 class Header extends React.Component {
     // 放在实例上面

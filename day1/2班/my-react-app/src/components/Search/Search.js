@@ -37,7 +37,9 @@ class Search extends React.Component {
     render() {
         console.log(this)
         return (
-            <div className={
+            <div style={{
+                paddingTop: '58px'
+            }} className={
                 this.state.bool ? 'weui-search-bar' : 'weui-search-bar weui-search-bar_focusing'
             } id="searchBar">
                 <form className="weui-search-bar__form">
